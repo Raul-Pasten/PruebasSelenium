@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="156.441" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="TestSuite" time="347.042" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="jansi.mode" value="strip"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.4.1+1"/>
     <property name="sun.boot.library.path" value="C:\Users\Test Group\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.4.v20220903-1038\jre\bin"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Test Group\eclipse-workspace\BCI_Seguros_Reembolso_Web"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Test Group\eclipse-workspace\BCI_Seguros_Reembolso_Web_Jenkins"/>
     <property name="java.vm.vendor" value="Eclipse Adoptium"/>
     <property name="java.vendor.url" value="https://adoptium.net/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="CL"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Test Group\eclipse-workspace\BCI_Seguros_Reembolso_Web"/>
+    <property name="user.dir" value="C:\Users\Test Group\eclipse-workspace\BCI_Seguros_Reembolso_Web_Jenkins"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="17.0.4.1+1"/>
     <property name="os.arch" value="amd64"/>
@@ -25,7 +25,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 11"/>
-    <property name="classworlds.conf" value="C:\Users\Test Group\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1628878928735157382.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\Test Group\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf6498873948983659893.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Users\Test Group\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.4.v20220903-1038\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/Test Group/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.4.v20220903-1038/jre/bin/server;C:/Users/Test Group/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.4.v20220903-1038/jre/bin;C:\Program Files\Java\jdk-11\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Test Group\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\apache-maven-3.9.1\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11\bin;C:\Users\Test Group\AppData\Local\Microsoft\WindowsApps;C:\Users\Test Group\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Test Group\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\apache-maven-3.9.1\bin;;C:\Users\Test Group\eclipse\java-2022-06\eclipse;;."/>
     <property name="jdk.debug" value="release"/>
@@ -49,7 +49,7 @@
     <property name="java.version" value="17.0.4.1"/>
     <property name="native.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Eclipse Adoptium"/>
-    <property name="maven.home" value="C:\Users\Test Group\eclipse-workspace\BCI_Seguros_Reembolso_Web\EMBEDDED"/>
+    <property name="maven.home" value="C:\Users\Test Group\eclipse-workspace\BCI_Seguros_Reembolso_Web_Jenkins\EMBEDDED"/>
     <property name="file.separator" value="\"/>
     <property name="java.version.date" value="2022-08-12"/>
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
@@ -58,5 +58,6 @@
     <property name="java.vendor.version" value="Temurin-17.0.4.1+1"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="CC_QA_Automatizacion" classname="test.java.carritocompras.CC_Test" time="129.655"/>
+  <testcase name="CC_QA_Automatizacion" classname="test.java.carritocompras.CC_Test" time="149.644"/>
+  <testcase name="CC_QA_Automatizacion" classname="test.java.carritocompras.CC_Test" time="152.019"/>
 </testsuite>

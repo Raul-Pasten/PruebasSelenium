@@ -1,1 +1,1 @@
-./Archivos/\screenshots\passed\CC_QA_Automatizacion_20230530_205846.png
+./Archivos/\screenshots\passed\CC_QA_Automatizacion_20230612_182507.png

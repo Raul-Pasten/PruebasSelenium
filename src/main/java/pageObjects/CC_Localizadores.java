@@ -49,7 +49,7 @@ public interface CC_Localizadores {
 	// VALIDACIÓN RESUMEN
 	// label
 	String labelResumenSolicitud = "/html/body/app-root/app-componentes/app-beneficiario/div/div[1]/div/div[2]/app-desplegables-resumen/div/div/section[1]/figcaption/h3"; //XPATH
-	String labelResumenAsegurado = "/html/body/app-root/app-componentes/app-beneficiario/div/div[1]/div/div[2]/app-desplegables-resumen/div/div/section[2]/article/div/h2"; //XPATH
+	String labelResumenAsegurado = "/html/body/app-root/app-componentes/app-beneficiario/div/div[1]/div/div[2]/app-desplegables-resumen/div/div/section[2]/article[1]/div/h2"; //XPATH
 	String labelResumenPrestacion = "/html/body/app-root/app-componentes/app-prestacion/div/div[1]/div/div[2]/app-desplegables-resumen/div/div/section[2]/article[2]/div/h2"; //XPATH
 	String labelResumenDocumentacion = "/html/body/app-root/app-componentes/app-form-prestacion/div/div[1]/div/div[2]/app-desplegables-resumen/div/div/section[2]/article[3]/div/h2"; //XPATH
 		
@@ -76,7 +76,7 @@ public interface CC_Localizadores {
 	String uploadDoc5 = "/html/body/app-root/app-componentes/app-form-prestacion/div/div[1]/div/div[1]/div/div[2]/form/div[12]/div[5]/div/div[2]/a/input"; //XPATH
 	String uploadDoc6 = "/html/body/app-root/app-componentes/app-form-prestacion/div/div[1]/div/div[1]/div/div[2]/form/div[12]/div[6]/div/div[2]/a/input"; //XPATH
 	
-	String buttonDocumentoDoble 	= "/html/body/app-root/app-componentes/app-form-prestacion/app-validacion-error/p-dialog/div/div/div[3]/div[1]/a"; //XPATH
+	String buttonDocumentoDuplicado = "/html/body/app-root/app-componentes/app-form-prestacion/app-validacion-error/p-dialog/div/div/div[3]/div[1]/a"; //XPATH
 	String buttonDocumentoAdicional = "/html/body/app-root/app-componentes/app-form-prestacion/app-validacion-error/p-dialog/div/div/div[3]/div[1]/a"; //XPATH
 	String buttonDocumentoPeso 		= "/html/body/app-root/app-componentes/app-form-prestacion/app-validacion-error/p-dialog/div/div/div[3]/div[1]/a"; //XPATH
 	

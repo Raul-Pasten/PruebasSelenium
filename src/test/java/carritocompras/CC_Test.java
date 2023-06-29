@@ -25,62 +25,62 @@ public class CC_Test extends GG_BaseTest {
 	public void CC_QA_Automatizacion(String args[]) throws InterruptedException {
 		
 		//String rutaDocumento = CC_Parametros.gloDir + "Documentos/";
-		String rutaDocumento = "C:\\Estructura_Base\\CC_Logs\\data\\Documentos\\";
+		//String rutaDocumento = "C:\\Estructura_Base\\CC_Logs\\data\\Documentos\\";
+		String rutaDocumento = System.getProperty("user.dir") + File.separator + "Archivos\\Documentos\\";
 		GG_Utils.infoTestCase("BCI Seguros",
 				"Validar la generación de un flujo de reembolso médico");
 		
-		CC_PasosFuncionales.iniciarSesion(args[0], args[1], args[2],args[3],"1");
-		CC_PasosFuncionales.ingresoReembolso(args[2],args[3], "2");
-		CC_PasosFuncionales.ingresoPrestacion(args[4],args[6],args[7],"3");
+		CC_PasosFuncionales.iniciarSesion(args[0],args[1],"1");
+		CC_PasosFuncionales.ingresoPrestacion(args[2],args[4],args[5],"2");
 		
-		if (args[7].toUpperCase().equalsIgnoreCase("CM")){
+		if (args[5].toUpperCase().equalsIgnoreCase("CM")){
 			
-			CC_PasosFuncionales.prestacionConsultaMedica(rutaDocumento,args[8],args[9],args[10],args[11],args[12],args[13],args[14],args[15],
-					args[24],args[25],args[26],args[27],"4");
-			
-		}
-		else if (args[7].toUpperCase().equalsIgnoreCase("ME")) {
-			
-			CC_PasosFuncionales.prestacionMedicamentos(rutaDocumento,args[8],args[9],args[10],args[11],args[12],args[13],args[14],args[15],
-					args[24],args[25],args[26],args[27],"4");
+			CC_PasosFuncionales.prestacionConsultaMedica(rutaDocumento,args[6],args[7],args[8],args[9],args[10],args[11],
+					args[12],args[13],args[22],args[23],args[24],args[25],"3");
 			
 		}
-		else if (args[7].toUpperCase().equalsIgnoreCase("EP")) {
+		else if (args[5].toUpperCase().equalsIgnoreCase("ME")) {
 			
-			CC_PasosFuncionales.prestacionExamenesProcedimientos(rutaDocumento,args[8],args[9],args[10],args[11],args[12],args[13],
-					args[14],args[15],args[16],args[17],args[24],args[25],args[26],args[27],"4");
-			
-		}
-		else if (args[7].toUpperCase().equalsIgnoreCase("PS")) {
-			
-			CC_PasosFuncionales.prestacionOtrosProfesionales(rutaDocumento,args[8],args[9],args[10],args[11],args[12],args[13],
-					args[14],args[15],args[16],args[17],args[24],args[25],args[26],args[27],"4");
+			CC_PasosFuncionales.prestacionMedicamentos(rutaDocumento,args[6],args[7],args[8],args[9],args[10],args[11],
+					args[12],args[13],args[22],args[23],args[24],args[25],"3");
 			
 		}
-		else if (args[7].toUpperCase().equalsIgnoreCase("CD")) {
+		else if (args[5].toUpperCase().equalsIgnoreCase("EP")) {
 			
-			CC_PasosFuncionales.prestacionConsultaDental(rutaDocumento,args[8],args[9],args[10],args[11],args[12],args[13],
-					args[14],args[15],args[16],args[17],args[18],args[19],args[20],args[21],args[22],args[24],
-					args[25],args[26],args[27],"4");
-			
-		}
-		else if (args[7].toUpperCase().equalsIgnoreCase("HO")) {
-			
-			CC_PasosFuncionales.prestacionHospitalizaciones(rutaDocumento,args[8],args[9],args[10],args[11],args[12],args[13],
-					args[14],args[15],args[16],args[17],args[18],args[19],args[20],args[21],args[22],args[23],args[24],
-					args[25],args[26],args[27],"4");
+			CC_PasosFuncionales.prestacionExamenesProcedimientos(rutaDocumento,args[6],args[7],args[8],args[9],args[10],args[11],
+					args[12],args[13],args[14],args[15],args[22],args[23],args[24],args[25],"3");
 			
 		}
-		else if (args[7].toUpperCase().equalsIgnoreCase("UM")) {
+		else if (args[5].toUpperCase().equalsIgnoreCase("PS")) {
+			
+			CC_PasosFuncionales.prestacionOtrosProfesionales(rutaDocumento,args[6],args[7],args[8],args[9],args[10],args[11],
+					args[12],args[13],args[14],args[15],args[22],args[23],args[24],args[25],"3");
+			
+		}
+		else if (args[5].toUpperCase().equalsIgnoreCase("CD")) {
+			
+			CC_PasosFuncionales.prestacionConsultaDental(rutaDocumento,args[6],args[7],args[8],args[9],args[10],args[11],
+					args[12],args[13],args[14],args[15],args[16],args[17],args[18],args[19],args[20],args[22],
+					args[23],args[24],args[25],"3");
+			
+		}
+		else if (args[5].toUpperCase().equalsIgnoreCase("HO")) {
+			
+			CC_PasosFuncionales.prestacionHospitalizaciones(rutaDocumento,args[6],args[7],args[8],args[9],args[10],args[11],
+					args[12],args[13],args[14],args[15],args[16],args[17],args[18],args[19],args[20],args[21],args[22],
+					args[23],args[24],args[25],"3");
+			
+		}
+		else if (args[5].toUpperCase().equalsIgnoreCase("UM")) {
 
-			CC_PasosFuncionales.prestacionUrgenciaMedica(rutaDocumento,args[8],args[9],args[10],args[11],args[12],args[13],
-					args[14],args[15],args[16],args[17],args[18],args[19],args[24],args[25],args[26],args[27],"4");
+			CC_PasosFuncionales.prestacionUrgenciaMedica(rutaDocumento,args[6],args[7],args[8],args[9],args[10],args[11],
+					args[12],args[13],args[14],args[15],args[16],args[17],args[22],args[23],args[24],args[25],"3");
 			
 		}
-		else if (args[7].toUpperCase().equalsIgnoreCase("OP")) {
+		else if (args[5].toUpperCase().equalsIgnoreCase("OP")) {
 			
-			CC_PasosFuncionales.prestacionOptica(rutaDocumento,args[8],args[9],args[10],args[11],args[12],args[13],
-					args[14],args[15],args[16],args[17],args[24],args[25],args[26],args[27],"4");
+			CC_PasosFuncionales.prestacionOptica(rutaDocumento,args[6],args[7],args[8],args[9],args[10],args[11],
+					args[12],args[13],args[14],args[15],args[22],args[23],args[24],args[25],"3");
 			
 		}
 		else {
@@ -89,19 +89,19 @@ public class CC_Test extends GG_BaseTest {
 			
 		}
 		
-		if (args[5].toUpperCase().equalsIgnoreCase("T")) {
+		if (args[3].toUpperCase().equalsIgnoreCase("T")) {
 			
-			CC_PasosFuncionales.datosCuentaTitular(args[27],args[28], args[29], "5");
+			CC_PasosFuncionales.datosCuentaTitular(args[25],args[26],args[27], "4");
 			
 		}
-		else if (args[5].toUpperCase().equalsIgnoreCase("A")) {
+		else if (args[3].toUpperCase().equalsIgnoreCase("A")) {
 			
-			CC_PasosFuncionales.datosCuentaAdicional(args[27],"5");
+			CC_PasosFuncionales.datosCuentaAdicional(args[25],"4");
 			
 		}
 		else {System.out.println("Nada");}
 		
-		CC_PasosFuncionales.obtenerNumeroSolicitud(args[0],args[2], "6");
+		CC_PasosFuncionales.obtenerNumeroSolicitud(args[0],args[2], "5");
 	}
 	
 	@DataProvider(name = "BCISeguros")

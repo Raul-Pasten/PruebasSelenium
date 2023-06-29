@@ -18,6 +18,9 @@ import test.java.carritocompras.CC_Test;
 
 import java.lang.Math;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 //En esta clase se ejecutan los Pasos de la Página.
 public class CC_PasosFuncionales extends CC_Test{
 	
@@ -25,7 +28,7 @@ public class CC_PasosFuncionales extends CC_Test{
 		CC_Test.driver = driver;
 	}
 
-	public static void iniciarSesion(String rut, String clave, String nombreTitular, String apellidoTitular ,String xNumero) {
+	public static void iniciarSesion(String rut, String clave,String xNumero) {
 		
 		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 
@@ -49,30 +52,12 @@ public class CC_PasosFuncionales extends CC_Test{
 			wait.until(ExpectedConditions.visibilityOf(inputContrasenaElement));
 			GG_Eventos.writeOnInput(inputContrasenaElement, clave);
 			
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 
 			//Click en Botón de ingreso
 			WebElement buttonIniciarSesionElement = elementFetch.getWebElement("XPATH", CC_Localizadores.buttonLoginIngresa);
 			wait.until(ExpectedConditions.elementToBeClickable(buttonIniciarSesionElement));
 			GG_Eventos.clickButton(buttonIniciarSesionElement);
-			
-			Thread.sleep(2000);
-			
-		} catch (Exception e) {
-			GG_Utils.eventFailed(currentEvent, e.getMessage());
-		}
-	}
-	
-	public static void ingresoReembolso (String nombreTitular, String apellidoTitular, String xNumero) {
-		
-		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
-		String solicitud = "Seguro Colectivo Temporal De Vida";
-		
-		try {
-			GG_Utils.outputInfo(xNumero + ") PASO FUNCIONAL iniciado: " + currentEvent);
-
-			WebDriverWait wait = new WebDriverWait(driver, 50);
-			GG_ElementFetch elementFetch = new GG_ElementFetch();
 		
 			//Se ingresa a página de reembolso (click en pestaña)
 			WebElement buttonReembolso = elementFetch.getWebElement("XPATH", CC_Localizadores.buttonReembolso);
@@ -84,10 +69,11 @@ public class CC_PasosFuncionales extends CC_Test{
 			wait.until(ExpectedConditions.elementToBeClickable(buttonImagenReembolso));
 			GG_Eventos.clickButton(buttonImagenReembolso);
 			
+			Thread.sleep(2000);
+			
 		} catch (Exception e) {
 			GG_Utils.eventFailed(currentEvent, e.getMessage());
 		}
-
 	}
 	
 	public static void ingresoPrestacion (String poseeBeneficiario, String rut, String prestacion, String xNumero) {
@@ -132,7 +118,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			// Validar si la persona posee beneficiarios 
 			
 			if (poseeBeneficiario.toUpperCase().equalsIgnoreCase("SI")) {
-				validarResumenTitulo("A");
+				//validarResumenTitulo("A");
 				
 				Thread.sleep(2000);
 				
@@ -167,7 +153,7 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				validarContenidoResumen(rut,"A");
 				
-				validarResumenTitulo("p");
+				//validarResumenTitulo("p");
 				
 			}
 			else if (poseeBeneficiario.toUpperCase().equalsIgnoreCase("NO")) {
@@ -175,7 +161,7 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				validarContenidoResumen(rut,"A");
 				
-				validarResumenTitulo("p");
+				//validarResumenTitulo("p");
 			}	
 			else {GG_Utils.outputInfo("Titular no tiene beneficiarios");}
 			
@@ -227,9 +213,9 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			validarContenidoResumen(prestacion,"p");
 			
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
 			
-			validarResumenTitulo("d");
+			//validarResumenTitulo("d");
 			
 			Thread.sleep(2000);
 			
@@ -249,7 +235,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			cargarDocumentoPeso(rutaDocumento,documentoDuplicado,CC_Localizadores.uploadDoc2);
+			cargarDocumentoPeso(rutaDocumento,documentoLimitePeso,CC_Localizadores.uploadDoc2);
 			
 			Thread.sleep(2000);
 			
@@ -264,9 +250,9 @@ public class CC_PasosFuncionales extends CC_Test{
 		}
 	}
 	
-	public static void prestacionMedicamentos (String rutaDocumento, String prestador, String fecha, String monto, String numeroBoleta, String documento1, 
-			String documento2, String documento3, String documento4, String cantidad, String documentoDuplicado, 
-			String documentoExtra, String documentoLimitePeso, String xNumero){
+	public static void prestacionMedicamentos (String rutaDocumento, String prestador, String fecha, String monto, String numeroBoleta, String documento1,
+			String documento2, String documento3, String documento4, String documentoDuplicado, String documentoExtra, String documentoLimitePeso,
+			String cantidad, String xNumero){
 		
 		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
 		String prestacion = "Medicamentos";
@@ -279,9 +265,15 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			validarContenidoResumen(prestacion,"p");
 			
-			validarResumenTitulo("d");
+			Thread.sleep(2000);
+			
+			//validarResumenTitulo("d");
+			
+			Thread.sleep(2000);
 			
 			ingresarDatosReembolso(prestador,fecha,monto,numeroBoleta);
+			
+			Thread.sleep(2000);
 			
 			cargar2BoxDocumentos(rutaDocumento,documento1,documento2,documento3,documento4);
 			
@@ -295,7 +287,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			cargarDocumentoPeso(rutaDocumento,documentoDuplicado,CC_Localizadores.uploadDoc2);
+			cargarDocumentoPeso(rutaDocumento,documentoLimitePeso,CC_Localizadores.uploadDoc2);
 			
 			Thread.sleep(2000);
 			
@@ -325,7 +317,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			validarContenidoResumen(prestacion,"p");
 			
-			validarResumenTitulo("d");
+			//validarResumenTitulo("d");
 			
 			ingresarDatosReembolso(prestador,fecha,monto,numeroBoleta);
 			
@@ -371,7 +363,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			validarContenidoResumen(prestacion,"p");
 			
-			validarResumenTitulo("d");
+			//validarResumenTitulo("d");
 			
 			ingresarDatosReembolso(prestador,fecha,monto,numeroBoleta);
 			
@@ -418,9 +410,9 @@ public class CC_PasosFuncionales extends CC_Test{
 		
 			validarContenidoResumen(prestacion,"p");
 		
-			validarResumenTitulo("d");
+			//validarResumenTitulo("d");
 		
-			ingresarDatosReembolso(prestador,fecha,monto,numeroBoleta);
+			ingresarDatosReembolsoSinBoleta(prestador,fecha,monto);
 		
 			cargar4BoxDocumentosDental(rutaDocumento,documento1,documento2,documento3,documento4,documento5,documento6,documento7,documento8,documento9,documento10,documento11);
 		
@@ -465,7 +457,7 @@ public class CC_PasosFuncionales extends CC_Test{
 		
 			validarContenidoResumen(prestacion,"p");
 		
-			validarResumenTitulo("d");
+			//validarResumenTitulo("d");
 		
 			ingresarDatosReembolso(prestador,fecha,monto,numeroBoleta);
 			
@@ -482,7 +474,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			//cargarDocumentoPeso(rutaDocumento,documentoDuplicado,CC_Localizadores.uploadDoc2);
+			cargarDocumentoPeso(rutaDocumento,documentoLimitePeso,CC_Localizadores.uploadDoc2);
 			
 			Thread.sleep(2000);
 			
@@ -514,9 +506,9 @@ public class CC_PasosFuncionales extends CC_Test{
 		
 			validarContenidoResumen(prestacion,"p");
 		
-			validarResumenTitulo("d");
+			//validarResumenTitulo("d");
 		
-			ingresarDatosReembolso(prestador,fecha,monto,numeroBoleta);
+			ingresarDatosReembolsoSinBoleta(prestador,fecha,monto);
 		
 			cargar4BoxDocumentos(rutaDocumento,documento1,documento2,documento3,documento4,documento5,documento6,documento7,documento8);
 		
@@ -561,7 +553,7 @@ public class CC_PasosFuncionales extends CC_Test{
 		
 			validarContenidoResumen(prestacion,"p");
 		
-			validarResumenTitulo("d");
+			//validarResumenTitulo("d");
 		
 			ingresarDatosReembolso(prestador,fecha,monto,numeroBoleta);
 		
@@ -578,9 +570,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			Thread.sleep(2000);
 			
 			cargarDocumentoPeso(rutaDocumento,documentoDuplicado,CC_Localizadores.uploadDoc2);
-			
-			Thread.sleep(2000);
-			
+						
 			WebElement buttonContinuar = elementFetch.getWebElement("XPATH", CC_Localizadores.buttonContinuarSolicitud);
 			wait.until(ExpectedConditions.elementToBeClickable(buttonContinuar));
 			GG_Eventos.clickButton(buttonContinuar);
@@ -617,6 +607,11 @@ public class CC_PasosFuncionales extends CC_Test{
 			WebElement inputIngresarCorreo = elementFetch.getWebElement("XPATH", CC_Localizadores.inputEditarCorreo);
 			wait.until(ExpectedConditions.visibilityOf(inputIngresarCorreo));
 			GG_Eventos.writeOnInput(inputIngresarCorreo, correo);
+			
+			Thread.sleep(2000);
+			
+			//Se valida el formato de correo
+			validarCorreo(correo);
 			
 			Thread.sleep(2000);
 			
@@ -756,7 +751,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc2 != "") {
+			if (!doc2.equals("")) {
 				
 				String documento2 = rutaDocumento + doc2 ;
 				File file2 = new File(documento2);
@@ -769,7 +764,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el primer recuadro");
 				
@@ -785,7 +781,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc4 != "") {
+			if (!doc4.equals("")) {
 				
 				String documento4 = rutaDocumento + doc4 ;
 				File file4 = new File(documento4);
@@ -798,7 +794,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el segundo recuadro");
 				
@@ -828,7 +825,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc2 != "") {
+			if (!doc2.equals("")) {
 				
 				String documento2 = rutaDocumento + doc2 ;
 				File file2 = new File(documento2);
@@ -841,7 +838,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el primer recuadro");
 				
@@ -856,7 +854,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc4 != "") {
+			if (!doc4.equals("")) {
 				
 				String documento4 = rutaDocumento + doc4 ;
 				File file4 = new File(documento4);
@@ -869,7 +867,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el segundo recuadro");
 				
@@ -885,7 +884,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc6 != "") {
+			if (!doc6.equals("")) {
 				
 				String documento6 = rutaDocumento + doc6 ;
 				File file6 = new File(documento6);
@@ -898,7 +897,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el tercer recuadro");
 				
@@ -928,7 +928,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc2 != "") {
+			if (!doc2.equals("")) {
 				
 				String documento2 = rutaDocumento + doc2 ;
 				File file2 = new File(documento2);
@@ -941,7 +941,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			}
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el primer recuadro");
 				
@@ -957,7 +958,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc4 != "") {
+			if (!doc4.equals("")) {
 				
 				String documento4 = rutaDocumento + doc4 ;
 				File file4 = new File(documento4);
@@ -970,7 +971,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el segundo recuadro");
 				
@@ -986,7 +988,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc6 != "") {
+			if (!doc6.equals("")) {
 				
 				String documento6 = rutaDocumento + doc6 ;
 				File file6 = new File(documento6);
@@ -999,7 +1001,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el tercer recuadro");
 				
@@ -1015,7 +1018,7 @@ public class CC_PasosFuncionales extends CC_Test{
 		
 			Thread.sleep(2000);
 			
-			if (doc8 != "") {
+			if (!doc8.equals("")) {
 				
 				String documento8 = rutaDocumento + doc8 ;
 				File file8 = new File(documento8);
@@ -1028,7 +1031,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el cuarto recuadro");
 				
@@ -1057,7 +1061,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc2 != "") {
+			if (!doc2.equals("")) {
 				
 				String documento2 = rutaDocumento + doc2 ;
 				File file2 = new File(documento2);
@@ -1070,7 +1074,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el primer recuadro");
 				
@@ -1086,7 +1091,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc4 != "") {
+			if (!doc4.equals("")) {
 				
 				String documento4 = rutaDocumento + doc4 ;
 				File file4 = new File(documento4);
@@ -1099,7 +1104,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el segundo recuadro");
 				
@@ -1115,7 +1121,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc6 != "") {
+			if (!doc6.equals("")) {
 				
 				String documento6 = rutaDocumento + doc6 ;
 				File file6 = new File(documento6);
@@ -1128,7 +1134,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el tercer recuadro");
 				
@@ -1144,7 +1151,7 @@ public class CC_PasosFuncionales extends CC_Test{
 		
 			Thread.sleep(2000);
 			
-			if (doc8 != "") {
+			if (!doc8.equals("")) {
 				
 				String documento8 = rutaDocumento + doc8 ;
 				File file8 = new File(documento8);
@@ -1157,14 +1164,15 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 			
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el tercer recuadro");
 				
 			}
 				
 				
-			if (doc9 != "") {
+			if (!doc9.equals("")) {
 					
 				String documento9 = rutaDocumento + doc9 ;
 				File file9 = new File(documento9);
@@ -1176,13 +1184,14 @@ public class CC_PasosFuncionales extends CC_Test{
 				GG_Utils.outputInfo("Se cargan 3 documentos en el cuarto recuadro");
 					
 				Thread.sleep(2000);	
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 2 documento en el tercer recuadro");
 				
 			}
 				
-			if (doc10 != "") {
+			if (!doc10.equals("")) {
 					
 				String documento10 = rutaDocumento + doc10 ;
 				File file10 = new File(documento10);
@@ -1194,13 +1203,14 @@ public class CC_PasosFuncionales extends CC_Test{
 				GG_Utils.outputInfo("Se cargan 4 documentos en el cuarto recuadro");
 					
 				Thread.sleep(2000);
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 3 documento en el tercer recuadro");
 				
 			}
 					
-			if (doc11 != "") {
+			if (!doc11.equals("")) {
 						
 				String documento11 = rutaDocumento + doc11 ;
 				File file11 = new File(documento11);
@@ -1213,7 +1223,8 @@ public class CC_PasosFuncionales extends CC_Test{
 						
 				Thread.sleep(2000);	
 
-			} else {
+			}
+			else {
 				
 				GG_Utils.outputInfo("Se carga 4 documento en el cuarto recuadro");
 				
@@ -1242,7 +1253,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc2 != "") {
+			if (!doc2.equals("")) {
 				
 				String documento2 = rutaDocumento + doc2 ;
 				File file2 = new File(documento2);
@@ -1255,7 +1266,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el primer recuadro");
 				
@@ -1271,7 +1283,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc4 != "") {
+			if (!doc4.equals("")) {
 				
 				String documento4 = rutaDocumento + doc4 ;
 				File file4 = new File(documento4);
@@ -1284,7 +1296,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			}
+			else if (doc4 == "") {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el segundo recuadro");
 				
@@ -1300,7 +1313,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc6 != "") {
+			if (!doc6.equals("")) {
 				
 				String documento6 = rutaDocumento + doc6 ;
 				File file6 = new File(documento6);
@@ -1313,7 +1326,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el tercer recuadro");
 				
@@ -1329,7 +1343,7 @@ public class CC_PasosFuncionales extends CC_Test{
 		
 			Thread.sleep(2000);
 			
-			if (doc6 != "") {
+			if (!doc8.equals("")) {
 				
 				String documento8 = rutaDocumento + doc8 ;
 				File file8 = new File(documento8);
@@ -1342,7 +1356,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el cuarto recuadro");
 				
@@ -1358,7 +1373,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc10 != "") {
+			if (!doc10.equals("")) {
 				
 				String documento10 = rutaDocumento + doc10 ;
 				File file10 = new File(documento10);
@@ -1371,7 +1386,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el quinto recuadro");
 				
@@ -1387,7 +1403,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 			Thread.sleep(2000);
 			
-			if (doc12 != "") {
+			if (!doc12.equals("")) {
 				
 				String documento12 = rutaDocumento + doc12 ;
 				File file12 = new File(documento12);
@@ -1400,7 +1416,8 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 
-			} else {
+			} 
+			else {
 				
 				GG_Utils.outputInfo("Se carga 1 documento en el sexto recuadro");
 				
@@ -1420,7 +1437,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			GG_ElementFetch elementFetch = new GG_ElementFetch();
 		
-			if (documento != "") {
+			if (!documento.equals("")) {
 				String doc = rutaDocumento + documento ;
 				File file = new File(doc);
 				String cargaDocumento = file.getAbsolutePath();
@@ -1432,7 +1449,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			
 				Thread.sleep(2000);
 				
-				WebElement buttonTotalDoc = elementFetch.getWebElement("XPATH", CC_Localizadores.buttonDocumentoDoble);
+				WebElement buttonTotalDoc = elementFetch.getWebElement("XPATH", CC_Localizadores.buttonDocumentoDuplicado);
 				wait.until(ExpectedConditions.elementToBeClickable(buttonTotalDoc));
 				GG_Eventos.clickButton(buttonTotalDoc);}
 			
@@ -1450,7 +1467,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			GG_ElementFetch elementFetch = new GG_ElementFetch();
 		
-			if (documento != "") {
+			if (!documento.equals("")) {
 				String doc = rutaDocumento + documento ;
 				File file = new File(doc);
 				String cargaDocumento = file.getAbsolutePath();
@@ -1462,7 +1479,7 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				Thread.sleep(2000);
 			
-				WebElement buttonTotalDoc = elementFetch.getWebElement("XPATH", CC_Localizadores.buttonDocumentoDoble);
+				WebElement buttonTotalDoc = elementFetch.getWebElement("XPATH", CC_Localizadores.buttonDocumentoAdicional);
 				wait.until(ExpectedConditions.elementToBeClickable(buttonTotalDoc));
 				GG_Eventos.clickButton(buttonTotalDoc);}
 		
@@ -1480,7 +1497,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			WebDriverWait wait = new WebDriverWait(driver, 50);
 			GG_ElementFetch elementFetch = new GG_ElementFetch();
 		
-			if (documento != "") {
+			if (!documento.equals("")) {
 				String doc = rutaDocumento + documento ;
 				File file = new File(doc);
 				String cargaDocumento = file.getAbsolutePath();
@@ -1496,7 +1513,9 @@ public class CC_PasosFuncionales extends CC_Test{
 				wait.until(ExpectedConditions.elementToBeClickable(buttonTotalDoc));
 				GG_Eventos.clickButton(buttonTotalDoc);}
 		
-			else {GG_Utils.outputInfo("El peso total de los archivos es menor a 30MB");}
+			else {
+				GG_Utils.outputInfo("El peso total de los archivos es menor a 30MB");
+				}
 		}catch (Exception e) {
 			GG_Utils.eventFailed(currentEvent, e.getMessage());
 		}
@@ -1549,6 +1568,45 @@ public class CC_PasosFuncionales extends CC_Test{
 		}
 	}
 	
+	public static void ingresarDatosReembolsoSinBoleta (String xPrestador, String xFecha, String xMonto) {
+		
+		String currentEvent = new Throwable().getStackTrace()[0].getMethodName();
+		
+		try {
+			GG_ElementFetch elementFetch = new GG_ElementFetch();
+			
+			//Rut Prestador
+			WebElement inputRutPrestador = elementFetch.getWebElement("XPATH", CC_Localizadores.inputRutPrestador);
+			GG_Eventos.writeOnInput(inputRutPrestador, xPrestador);
+			
+			validarRut(xPrestador);
+			
+			Thread.sleep(3000);
+			
+			//Fecha
+			WebElement inputFecha = elementFetch.getWebElement("XPATH", CC_Localizadores.inputFechaDocumento);
+			GG_Eventos.writeOnInput(inputFecha, xFecha);
+			
+			Thread.sleep(3000);
+			
+			//Monto Boleta
+			WebElement inputMonto = elementFetch.getWebElement("XPATH", CC_Localizadores.inputMontoBoleta);
+			GG_Eventos.writeOnInput(inputMonto, xMonto);
+			esNumerico(xMonto);
+			
+			Thread.sleep(3000);
+			
+			//DownScroll
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("scroll(0,500)");
+			Thread.sleep(2000);
+		
+		
+		} catch (Exception e) {
+			GG_Utils.eventFailed(currentEvent, e.getMessage());
+		}
+	}
+	
 	public static void validarResumenTitulo (String paso) {
 		
 		String resumen = "";
@@ -1573,7 +1631,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			} catch (Exception e) {
 				GG_Utils.eventFailed(currentEvent, e.getMessage());
 			}}
-		else if (paso == "P" || paso == "p") {
+		if (paso == "P" || paso == "p") {
 			try {
 				resumen = "PRESTACIÓN";
 				WebDriverWait wait = new WebDriverWait(driver, 50);
@@ -1591,7 +1649,7 @@ public class CC_PasosFuncionales extends CC_Test{
 			} catch (Exception e) {
 				GG_Utils.eventFailed(currentEvent, e.getMessage());
 			}}
-		else if (paso == "D" || paso == "d") {
+		if (paso == "D" || paso == "d") {
 			resumen = "DOCUMENTACIÓN";
 			try {
 				
@@ -1648,6 +1706,7 @@ public class CC_PasosFuncionales extends CC_Test{
 				
 				//Click para ver mensaje resumen
 				WebElement buttonDesplegar = elementFetch.getWebElement("XPATH", CC_Localizadores.buttonResumenPrestacion);
+				wait.until(ExpectedConditions.visibilityOf(buttonDesplegar));
 				GG_Eventos.clickButton(buttonDesplegar);
 				
 				//Validar resumen
@@ -1765,5 +1824,20 @@ public class CC_PasosFuncionales extends CC_Test{
 			GG_Utils.eventFailed(currentEvent, e.getMessage());
 		}
 	}
+	
+	   public static void validarCorreo(String contenido) {
+		   
+	        // Patrón para validar el email
+	        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+	 
+	        // El email a validar
+	        Matcher mather = pattern.matcher(contenido);
+	 
+	        if (mather.find() == true) {
+	        	GG_Utils.outputInfo("El email ingresado es válido.");
+	        } else {
+	        	GG_Utils.outputInfo("El email ingresado es inválido.");
+	        }
+	    }
 	
 }

@@ -138,7 +138,7 @@ public class GG_BaseTest {
             "--disable-dev-shm-usage");
 
             options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-            options.setExperimentalOption("useAutomationExtension", false);
+           // options.setExperimentalOption("useAutomationExtension", false);
             options.addArguments("--incognito", "--disable-blink-features=AutomationControlled");
 
             options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
